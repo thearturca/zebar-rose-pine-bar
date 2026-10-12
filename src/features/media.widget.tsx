@@ -101,7 +101,7 @@ export function MediaWidget() {
           setShouldScroll(false);
           if (textRef && containerRef) {
             setDuration(calculateDuration(textRef, containerRef));
-            setShouldScroll(checkShouldScroll(textRef, containerRef));
+            // setShouldScroll(checkShouldScroll(textRef, containerRef));
           }
         }, 500);
       }
@@ -177,6 +177,14 @@ export function MediaWidget() {
                   ref={containerRef}
                   class="overflow-clip max-w-[200px] inline-flex justify-start items-center"
                   title={title()}
+                  onMouseOver={() => {
+                    if (textRef && containerRef) {
+                      setShouldScroll(checkShouldScroll(textRef, containerRef));
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    setShouldScroll(false);
+                  }}
                 >
                   <span
                     class="whitespace-nowrap absolute opacity-0 pointer-events-none block w-fit"
